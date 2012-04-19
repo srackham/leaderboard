@@ -43,12 +43,12 @@ if Meteor.is_client
       Session.set 'sort_by_name', not Session.get('sort_by_name')
 
     'click input.add': ->
-      input = document.getElementById('add-item')
-      if input.value
+      input = $('#add-item')
+      if input.val()
         Players.insert
-          name: input.value
+          name: input.val()
           score: Math.floor(Math.random() * 10) * 5
-        input.value = ''
+        input.val ''
 
     'click input.reset': -> reset_scores()
 
