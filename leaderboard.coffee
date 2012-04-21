@@ -1,9 +1,16 @@
 # Set up a collection to contain player information. On the server,
 # it is backed by a MongoDB collection named 'players.'
 
+# Add properties to template helper.
+# From http://coffeescript.org/documentation/docs/helpers.html
+extend = (object, properties) ->
+  for key, val of properties
+    object[key] = val
+  object
+
 Players = new Meteor.Collection 'players'
 
-reset_scores = ->
+reset_data = ->
   Players.remove {}
   names = [ 'Ada Lovelace',
             'Grace Hopper',
@@ -19,6 +26,20 @@ reset_scores = ->
       score: Math.floor(Math.random() * 10) * 5
 
 if Meteor.is_client
+
+  ###
+  Template.navbar.events =
+    'click .sort_by_name': -> Session.set 'sort_by_name', false
+    'click .sort_by_score': -> Session.set 'sort_by_name', true
+    'click .reset_data': -> reset_data()
+  ###
+
+  $.extend Template.navbar,
+    events:
+      'click .sort_by_name': -> Session.set 'sort_by_name', false
+      'click .sort_by_score': -> Session.set 'sort_by_name', true
+      'click .reset_data': -> reset_data()
+
   Template.leaderboard.players = ->
     if Session.get('sort_by_name')
       sort = {score: -1, name: 1}
@@ -39,9 +60,6 @@ if Meteor.is_client
     'click input.inc': ->
       Players.update Session.get('selected_player'), {$inc: {score: 5}}
 
-    'click input.sort': ->
-      Session.set 'sort_by_name', not Session.get('sort_by_name')
-
     'click input.add': ->
       input = $('#add-item')
       if input.val()
@@ -49,8 +67,6 @@ if Meteor.is_client
           name: input.val()
           score: Math.floor(Math.random() * 10) * 5
         input.val ''
-
-    'click input.reset': -> reset_scores()
 
   Template.player.events =
     'click': -> Session.set 'selected_player', @_id
@@ -60,4 +76,4 @@ if Meteor.is_client
 # On server startup, create some players if the database is empty.
 if Meteor.is_server
   Meteor.startup ->
-    reset_scores() if Players.find().count() is 0
+    reset_data() if Players.find().count() is 0
