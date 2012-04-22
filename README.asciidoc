@@ -12,7 +12,8 @@ sort players by name and score.  The changes to the original example
 reflect these enhancements.  I've made use of the jQuery `$.extend()`
 API to soak up repetitive template property assignments.
 
-image::screenshot.png[]
+Here's a
+https://github.com/srackham/leaderboard-coffeescript/blob/master/screenshot.png[screenshot].
 
 The only tricky bit was injecting the Bootstrap tooltips into the DOM
 after template (re)rendering. This is done with the
