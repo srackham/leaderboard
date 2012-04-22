@@ -4,89 +4,63 @@
 </head>
 
 <body>
-
-    {{> navbar}}
-
-    <div class="container">
-      <div class="span12">
-        {{> leaderboard}}
-      </div>
-    </div><!-- /container -->
-
-</body>
-
-<template name="navbar">
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <a class="brand" href="#">Leaderboard</a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="sort_by_name"><a href="#">Sort by Name</a></li>
-                <li><a class="sort_by_score" href="#">Sort by Score</a></li>
-                <li class="divider"></li>
-                <li class="reset_data"><a href="#">Reset Data</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav pull-right">
-            <li><a href="#">Github</a></li>
-            <li><a href="http://meteor.com/examples/leaderboard" target="_blank">About</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+        {{> navbar}}
       </div>
     </div>
   </div>
+  <div class="container">
+    {{> leaderboard}}
+  </div>
+</body>
+
+<template name="navbar">
+        <a class="brand" href="#">Leaderboard</a>
+        <ul class="nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="sort_by_name"><a href="#">Sort by Name</a></li>
+              <li><a class="sort_by_score" href="#">Sort by Score</a></li>
+              <li class="divider"></li>
+              <li class="reset_data"><a href="#">Reset Data</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Github</a></li>
+          <li><a href="http://meteor.com/examples/leaderboard" target="_blank">About</a></li>
+        </ul>
 </template>
 
 <template name="leaderboard">
-  <div class="leaderboard">
-    <table class="table table-striped table-condensed">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Score</th>
-          <th style="width: 40px"></th>
-        </tr>
-      </thead>
-      <tbody>
-      {{#each players}}
-        {{> player}}
-      {{/each}}
-      </tbody>
-    </table>
-  </div>
-
-  {{#if selected_name}}
-  <div class="details">
-    <span class="name">{{selected_name}}</span>
-    <input type="button" class="inc" value="Give 5 points" />
-  </div>
-  {{/if}}
-
   <div>
-    <input id="add-item" type="text" class="add" placeholder="New item"/>
-    <input type="button" class="add" value="Add" />
+    <input id="player_name" type="text" placeholder="New player"/>
+    <input id="add_button" type="button" value="Add Player" />
   </div>
-
-  {{#unless selected_name}}
-  <div class="none">Click a player to select</div>
-  {{/unless}}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+        <th style="width: 20px"></th>
+        <th style="width: 20px"></th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each players}}
+      {{> player}}
+    {{/each}}
+    </tbody>
+  </table>
 </template>
 
 <template name="player">
-  <tr class="player {{selected}}">
+  <tr class="player">
     <td class="name">{{name}}</td>
     <td class="score">{{score}}</td>
-    <!-- 
-    <td><i class="destroy icon-remove"></i></td>
-    -->
-    <td>
-      <a class="destroy btn btn-danger" href="#"><i class="icon-trash icon-white"></i></a>
-    </td>
+    <td><i class="increment icon-plus" rel="tooltip" data-original-title="Add five points to the score"></i></td>
+    <td><i class="remove icon-remove" rel="tooltip" data-original-title="Delete player"></i></td>
   </tr>
+  {{render_tooltips}}
 </template>
-

@@ -1,21 +1,21 @@
 body {
-  /* Make the container go all the way to the bottom of the topbar */
+  /* Offset the container below the topbar */
   padding-top: 60px;
 }
 
-.leaderboard {
-  margin-left: auto;
-  margin-right: auto;
-  table {
-    width: 400px;
-  }
+.navbar {
+  width: 440px;
+}
+
+.container {
+  width: 400px !important;
+  margin-left: 20px;
 }
 
 .player {
-  &.selected td {
-    background-color: yellow !important;
-  }
-  .destroy:hover {
-    cursor: pointer;
+  .increment, .remove {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
