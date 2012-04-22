@@ -28,4 +28,4 @@ NOTE: The tooltip workaround works fine with Chrome 18 but still
 leaves orphaned tooltips after player deletion on Firefox 11 and IE9.
 
 This document is also published as a
-http://srackham.wordpress.com/TODO[blogpost].
+https://srackham.wordpress.com/2012/04/22/meteor-leaderboard-with-coffeescript-less-and-bootstrap/[blogpost].
