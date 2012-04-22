@@ -1,0 +1,26 @@
+= Meteor Leaderboard with Coffee, Less and Bootstrap
+
+A port of the http://meteor.com/[Meteor] framework's
+http://meteor.com/examples/leaderboard[Leaderboard example] rewritten
+using http://coffeescript.org/[CoffeeScript],
+http://lesscss.org/[Less] and Twitter
+http://twitter.github.com/bootstrap/[Bootstrap].
+
+This port has been enhanced with Bootstrap styling, a drop-down menu
+and tooltips. You can also add and delete players, reset the data and
+sort players by name and score.  The changes to the original example
+reflect these enhancements.  I've made use of the jQuery `$.extend()`
+API to soak up repetitive template property assignments.
+
+image::screenshot.png[]
+
+The only tricky bit was injecting the Bootstrap tooltips into the DOM
+after template (re)rendering. This is done with the
+`Template.player.render_tooltips` method which is invoked each time
+the 'player' template is rendered.  Tooltip injection is defered until
+the template has been rendered using the `Meteor.defer` method (see
+http://stackoverflow.com/questions/10109788/callback-after-the-dom-was-updated-in-meteor-js[this
+stackoverflow discussion]).
+
+NOTE: The tooltip workaround works fine with Chrome 18 but still
+leaves orphaned tooltips after player deletion on Firefox 11 and IE9.

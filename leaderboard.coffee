@@ -44,7 +44,7 @@ if Meteor.is_client
       'click .remove': -> Players.remove @_id
 
     render_tooltips: ->
-      # Update tooltips after the template is rendered.
+      # Update tooltips after the template has rendered.
       Meteor.defer ->
         $('.tooltip').remove()  # Delete any orphaned tooltips (only works in Chrome, not Firefox or IE9).
         $('[rel=tooltip]').tooltip()
