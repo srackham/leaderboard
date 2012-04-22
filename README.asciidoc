@@ -17,8 +17,9 @@ image::blob/master/screenshot.png[]
 The only tricky bit was injecting the Bootstrap tooltips into the DOM
 after template (re)rendering. This is done with the
 `Template.player.render_tooltips` method which is invoked each time
-the 'player' template is rendered.  Tooltip injection is defered until
-the template has been rendered using the `Meteor.defer` method (see
+the 'player' template is rendered.  Tooltip injection is deferred
+until the template has been rendered using the `Meteor.defer` method
+(see
 http://stackoverflow.com/questions/10109788/callback-after-the-dom-was-updated-in-meteor-js[this
 stackoverflow discussion]).
 
