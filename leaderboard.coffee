@@ -1,21 +1,21 @@
 Players = new Meteor.Collection 'players'
 
-if Meteor.is_client
+reset_data = ->
+  Players.remove {}
+  names = [ 'Ada Lovelace',
+            'Grace Hopper',
+            'Marie Curie',
+            'Carl Friedrich Gauss',
+            'Nikola Tesla',
+            'Claude Shannon',
+            'Issac Newton',
+          ]
+  for name in names
+    Players.insert
+      name: name
+      score: Math.floor(Math.random() * 10) * 5
 
-  reset_data = ->
-    Players.remove {}
-    names = [ 'Ada Lovelace',
-              'Grace Hopper',
-              'Marie Curie',
-              'Carl Friedrich Gauss',
-              'Nikola Tesla',
-              'Claude Shannon',
-              'Issac Newton',
-            ]
-    for name in names
-      Players.insert
-        name: name
-        score: Math.floor(Math.random() * 10) * 5
+if Meteor.is_client
 
   $.extend Template.navbar,
     events:
