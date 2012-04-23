@@ -33,16 +33,18 @@ to clone). You also need to install the Meteor jquery package and
 compile the CoffeeScript and Less files (in my development environment
 I have configuired Vim to auto-compile CoffeeScript and Less files):
 
-   meteor create leaderboard-coffeescript
-   rm leaderboard-coffeescript/*
-   mv leaderboard-coffeescript/.meteor/ /tmp
-   git clone git@github.com:srackham/leaderboard-coffeescript.git
-   mv /tmp/.meteor/ leaderboard-coffeescript/
-   cd leaderboard-coffeescript/
-   meteor add jquery
-   coffee -c leaderboard.coffee
-   lessc client/leaderboard.less client/leaderboard.css
-   meteor
+--------------------------------------------------------------
+meteor create leaderboard-coffeescript
+rm leaderboard-coffeescript/*
+mv leaderboard-coffeescript/.meteor/ /tmp
+git clone git@github.com:srackham/leaderboard-coffeescript.git
+mv /tmp/.meteor/ leaderboard-coffeescript/
+cd leaderboard-coffeescript/
+meteor add jquery
+coffee -c leaderboard.coffee
+lessc client/leaderboard.less client/leaderboard.css
+meteor
+--------------------------------------------------------------
 
 Tested using Meteor version 0.3.3 and compiled with CoffeeScript
 version 1.2.0.
