@@ -1,5 +1,4 @@
-Meteor Leaderboard example with CoffeeScript, Less and Bootstrap
-----------------------------------------------------------------
+# Meteor Leaderboard example with CoffeeScript, Less and Bootstrap
 
 A port of the [Meteor](http://meteor.com/) framework's [Leaderboard example](http://meteor.com/examples/leaderboard) rewritten using [CoffeeScript](http://coffeescript.org/), [Less](http://lesscss.org/) and Twitter [Bootstrap](http://twitter.github.com/bootstrap/).
 
@@ -9,8 +8,9 @@ Here's a [screenshot](https://github.com/srackham/leaderboard-coffeescript/blob/
 
 The only tricky bit was injecting the Bootstrap tooltips into the DOM after template (re)rendering. This is done with the `Template.player.render_tooltips` method which is invoked each time the 'player' template is rendered.  Tooltip injection is deferred until the template has been rendered using the `Meteor.defer` method (see [this stackoverflow discussion](http://stackoverflow.com/questions/10109788/callback-after-the-dom-was-updated-in-meteor-js)).
 
-NOTE: The tooltip workaround works fine with Chrome 18 but still leaves orphaned tooltips after player deletion on Firefox 11 and IE9.
+**NOTE**: The tooltip workaround works fine with Chrome 18 but still leaves orphaned tooltips after player deletion on Firefox 11 and IE9.
 
+## Installation
 To install create a meteor  project and clone this repo into it (you have to move the `.meteor` directory out temporarily else git refuses to clone). You also need to install the Meteor jquery package and compile the CoffeeScript and Less files (in my development environment I have configuired Vim to auto-compile CoffeeScript and Less files):
 
     meteor create leaderboard-coffeescript
@@ -22,7 +22,10 @@ To install create a meteor  project and clone this repo into it (you have to mov
     meteor add jquery
     coffee -c leaderboard.coffee
     lessc client/leaderboard.less client/leaderboard.css
-    meteor
+
+To start the project in the built-in Meteor server:
+
+    meteor run
 
 Tested using Meteor version 0.3.3 and compiled with CoffeeScript version 1.2.0.
 
