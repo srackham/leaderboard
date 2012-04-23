@@ -1,6 +1,6 @@
 Players = new Meteor.Collection 'players'
 
-reset_data = ->
+reset_data = -> # Executes on both client and server.
   Players.remove {}
   names = [ 'Ada Lovelace',
             'Grace Hopper',
@@ -42,12 +42,11 @@ if Meteor.is_client
     events:
       'click .increment': -> Players.update @_id, $inc: {score: 5}
       'click .remove': -> Players.remove @_id
+      'click': -> $('.tooltip').remove()  # To prevent orphaned tooltips.
 
-    render_tooltips: ->
+    enable_tooltips: ->
       # Update tooltips after the template has rendered.
-      Meteor.defer ->
-        $('.tooltip').remove()  # Delete any orphaned tooltips (only works in Chrome, not Firefox or IE9).
-        $('[rel=tooltip]').tooltip()
+      Meteor.defer -> $('[rel=tooltip]').tooltip()
       ''
 
 # On server startup, create some players if the database is empty.
