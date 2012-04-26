@@ -42,7 +42,7 @@ if Meteor.is_client
     events:
       'click .increment': -> Players.update @_id, $inc: {score: 5}
       'click .remove': -> Players.remove @_id
-      'click': -> $('.tooltip').remove()  # To prevent orphaned tooltips.
+      'click': -> $('.tooltip').remove()  # To prevent zombie tooltips.
 
     enable_tooltips: ->
       # Update tooltips after the template has rendered.

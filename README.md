@@ -6,9 +6,9 @@ This port has been enhanced with Bootstrap styling, a drop-down menu and tooltip
 
 Here's a [screenshot](https://github.com/srackham/leaderboard-coffeescript/blob/master/screenshot.png).
 
-The only tricky bit was injecting the tooltip popup events (with Bootstrap's jQuery `tooltip()` plugin method) into the DOM after template (re)rendering. This is done with the `Template.player.enable_tooltips` method which is invoked each time the 'player' template is rendered.  Injection is deferred until the template has been rendered using the `Meteor.defer` method (see [this stackoverflow discussion](http://stackoverflow.com/questions/10109788/callback-after-the-dom-was-updated-in-meteor-js)).
+The only tricky bit was setting the tooltip popup events (with Bootstrap's jQuery `tooltip()` plugin method) after template (re)rendering. This is done with the `Template.player.enable_tooltips` method which is invoked each time the 'player' template is rendered.  Execution is deferred until the template has been rendered using the `Meteor.defer` method (see [this stackoverflow discussion](http://stackoverflow.com/questions/10109788/callback-after-the-dom-was-updated-in-meteor-js)).
 
-**NOTE**: When an element with a tooltip is clicked tooltips are deleted, this prevents zombie tooltips from occuring when elements are deleted or moved.
+**NOTE**: When an element with a tooltip is clicked tooltip popups are deleted, this prevents zombie tooltips from occuring when the corresponding DOM elements are deleted or moved.
 
 ## Installation
 To install create a meteor  project and clone this repo into it (you have to move the `.meteor` directory out temporarily else git refuses to clone). You also need to install the Meteor jquery package and compile the CoffeeScript and Less files (in my development environment I have configuired Vim to auto-compile CoffeeScript and Less files):
