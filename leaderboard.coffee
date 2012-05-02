@@ -17,13 +17,13 @@ reset_data = -> # Executes on both client and server.
 
 if Meteor.is_client
 
-  $.extend Template.navbar,
+  _.extend Template.navbar,
     events:
       'click .sort_by_name': -> Session.set 'sort_by_name', true
       'click .sort_by_score': -> Session.set 'sort_by_name', false
       'click .reset_data': -> reset_data()
 
-  $.extend Template.leaderboard,
+  _.extend Template.leaderboard,
     players: ->
       sort = if Session.get('sort_by_name') then name: 1 else score: -1
       Players.find {}, sort: sort
@@ -38,7 +38,7 @@ if Meteor.is_client
             score: Math.floor(Math.random() * 10) * 5
           input.val ''
 
-  $.extend Template.player,
+  _.extend Template.player,
     events:
       'click .increment': -> Players.update @_id, $inc: {score: 5}
       'click .remove': -> Players.remove @_id
