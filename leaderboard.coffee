@@ -46,7 +46,7 @@ if Meteor.is_client
 
     enable_tooltips: ->
       # Update tooltips after the template has rendered.
-      Meteor.defer -> $('[rel=tooltip]').tooltip()
+      _.defer -> $('[rel=tooltip]').tooltip()
       ''
 
 # On server startup, create some players if the database is empty.
