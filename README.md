@@ -19,7 +19,7 @@ To install create a meteor  project and clone this repo into it (you have to mov
     git clone git@github.com:srackham/leaderboard-coffeescript.git
     mv /tmp/.meteor/ leaderboard-coffeescript/
     cd leaderboard-coffeescript/
-    meteor add jquery
+    meteor add jquery insecure accounts-ui accounts-password accounts-google
     coffee -c leaderboard.coffee
     lessc client/leaderboard.less client/leaderboard.css
 
