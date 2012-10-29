@@ -3,11 +3,10 @@
 
 Players = new Meteor.Collection 'players'
 
-Players.allow(
+Players.allow
   insert: (userId) -> userId   # The user must be logged in.
   update: (userId) -> userId   # The user must be logged in.
   remove: (userId) -> userId   # The user must be logged in.
-)
 
 reset_data = ->
   Players.remove {}

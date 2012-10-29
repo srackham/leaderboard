@@ -18,18 +18,37 @@ _.extend Template.leaderboard,
       return if evt.type is 'keyup' and evt.which isnt 13 # Key is not Enter.
       input = $('#player_name')
       if input.val()
-        Players.insert
-          name: input.val()
-          score: Math.floor(Math.random() * 10) * 5
+        Players.insert {
+            name: input.val()
+            score: Math.floor(Math.random() * 10) * 5
+          },
+          (err) -> Template.error.show(err.reason) if err
         input.val ''
 
 _.extend Template.player,
   events:
-    'click .increment': -> Players.update @_id, $inc: {score: 5}
-    'click .remove': -> Players.remove @_id
-    'click': -> $('.tooltip').remove()  # To prevent zombie tooltips.
+    'click .increment': ->
+      Players.update @_id, $inc: {score: 5},
+        (err) -> Template.error.show(err.reason) if err
+    'click .remove': ->
+      Players.remove @_id,
+        (err) -> Template.error.show(err.reason) if err
+    'click': ->
+      $('.tooltip').remove()  # To prevent zombie tooltips.
 
   enable_tooltips: ->
     # Update tooltips after the template has rendered.
     _.defer -> $('[rel=tooltip]').tooltip()
     ''
+
+_.extend Template.error,
+  error: -> Session.get 'error'
+
+  events:
+    'click .close': -> Template.error.hide()
+
+  show: (msg) ->
+    $('#error').show('fast', -> Session.set('error', msg))
+
+  hide: ->
+    $('#error').hide('fast', -> Session.set('error', undefined))

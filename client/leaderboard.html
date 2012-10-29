@@ -12,6 +12,7 @@
     </div>
   </div>
   <div class="container">
+    {{> error}}
     {{> leaderboard}}
   </div>
 </body>
@@ -34,6 +35,13 @@
         <ul class="nav pull-right">
           <li><a href="#">{{loginButtons}}</a></li>
         </ul>
+</template>
+
+<template name="error">
+    <div id="error" class="alert alert-error {{#unless error}}hide{{/unless}}">
+      <button type="button" class="close">×</button>
+      <b>{{error}}</b>
+    </div>
 </template>
 
 <template name="leaderboard">
