@@ -6,7 +6,7 @@ _.extend Template.navbar,
   events:
     'click .sort_by_name': -> Session.set 'sort_by_name', true
     'click .sort_by_score': -> Session.set 'sort_by_name', false
-    'click .reset_data': -> reset_data()
+    'click .reset_data': -> reset_data((err) -> Template.error.show(err.reason))
 
 _.extend Template.leaderboard,
   players: ->

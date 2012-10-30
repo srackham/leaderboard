@@ -8,7 +8,7 @@ Players.allow
   update: (userId) -> userId   # The user must be logged in.
   remove: (userId) -> userId   # The user must be logged in.
 
-reset_data = ->
+reset_data = (errback) ->
   names = [ 'Ada Lovelace',
             'Grace Hopper',
             'Marie Curie',
@@ -20,11 +20,13 @@ reset_data = ->
   Players.remove {},
     (err) ->
       if err
-        Template.error.show(err.reason)
+        if errback then errback(err) else console.log err.reason
       else
         for name in names
           Players.insert {
               name: name
               score: Math.floor(Math.random() * 10) * 5
             },
-            (err) -> Template.error.show(err.reason) if err
+            (err) ->
+              if err
+                if errback then errback(err) else console.log err.reason
