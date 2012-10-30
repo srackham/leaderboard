@@ -9,7 +9,6 @@ Players.allow
   remove: (userId) -> userId   # The user must be logged in.
 
 reset_data = ->
-  Players.remove {}
   names = [ 'Ada Lovelace',
             'Grace Hopper',
             'Marie Curie',
@@ -18,7 +17,14 @@ reset_data = ->
             'Claude Shannon',
             'Issac Newton',
           ]
-  for name in names
-    Players.insert
-      name: name
-      score: Math.floor(Math.random() * 10) * 5
+  Players.remove {},
+    (err) ->
+      if err
+        Template.error.show(err.reason)
+      else
+        for name in names
+          Players.insert {
+              name: name
+              score: Math.floor(Math.random() * 10) * 5
+            },
+            (err) -> Template.error.show(err.reason) if err
