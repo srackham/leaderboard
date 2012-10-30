@@ -7,15 +7,12 @@ EXEC_PRINT_OPTS = printStdout: true, printStderr: true
 desc 'List Jake tasks.'
 task 'default', -> jake.exec ['jake -T'], EXEC_PRINT_OPTS
 
-#TODO
-desc 'Project initialization.'
-task 'init', -> console.log 'NOT YET IMPLEMENTED'
-
-desc 'Build JavaScript executables from CoffeeScript source.'
-task 'build.coffee', ->
+desc 'Compile CoffeeScript and LESS source files.'
+task 'build', ->
   jake.exec ['coffee -cb model.coffee',
              'coffee -cb ./client/client.coffee',
-             'coffee -cb ./server/server.coffee'],
+             'coffee -cb ./server/server.coffee',
+             'lessc ./client/leaderboard.less ./client/leaderboard.css'],
              EXEC_PRINT_OPTS
 
 desc 'Push project to github.'
