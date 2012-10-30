@@ -1,12 +1,18 @@
 # Leaderboard -- client
 
 Meteor.subscribe 'players'
+bootbox.animate false
 
 _.extend Template.navbar,
   events:
     'click .sort_by_name': -> Session.set 'sort_by_name', true
     'click .sort_by_score': -> Session.set 'sort_by_name', false
-    'click .reset_data': -> reset_data((err) -> Template.error.show(err.reason))
+    #'click .reset_data': -> reset_data((err) -> Template.error.show(err.reason))
+    'click .reset_data': ->
+      bootbox.confirm 'Do you want to reset the data?', 'No', 'Yes',
+        (confirmed) ->
+          if confirmed
+            Players.reset_data (err) -> Template.error.show(err.reason)
 
 _.extend Template.leaderboard,
   players: ->
