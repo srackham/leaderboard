@@ -9,7 +9,7 @@ _.extend Template.navbar,
     'click .sort_by_score': -> Session.set 'sort_by_name', false
     #'click .reset_data': -> reset_data((err) -> Template.error.show(err.reason))
     'click .reset_data': ->
-      bootbox.confirm 'Do you want to reset the data?', 'No', 'Yes',
+      bootbox.confirm 'Are you sure you want to reset the data?', 'No', 'Yes',
         (confirmed) ->
           if confirmed
             Players.reset_data (err) -> Template.error.show(err.reason)
