@@ -10,9 +10,9 @@ task 'default', -> jake.exec ['jake -T'], EXEC_PRINT_OPTS
 desc 'Compile CoffeeScript and LESS source files.'
 task 'build', ->
   jake.exec ['coffee -cb model.coffee',
-             'coffee -cb ./client/client.coffee',
-             'coffee -cb ./server/server.coffee',
-             'lessc ./client/leaderboard.less ./client/leaderboard.css'],
+             'coffee -cb ./client/main.coffee',
+             'coffee -cb ./server/main.coffee',
+             'lessc ./client/main.less ./client/main.css'],
              EXEC_PRINT_OPTS
 
 desc 'Push project to github.'
