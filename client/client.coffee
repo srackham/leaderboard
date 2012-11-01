@@ -1,18 +1,20 @@
 # Leaderboard -- client
 
+Meteor.startup ->
+  bootbox.animate false
+  Toaster.defaults.timeout = 5000
+
 Meteor.subscribe 'players'
-bootbox.animate false
 
 _.extend Template.navbar,
   events:
     'click .sort_by_name': -> Session.set 'sort_by_name', true
     'click .sort_by_score': -> Session.set 'sort_by_name', false
-    #'click .reset_data': -> reset_data((err) -> Template.error.show(err.reason))
     'click .reset_data': ->
       bootbox.confirm 'Are you sure you want to reset the data?', 'No', 'Yes',
         (confirmed) ->
           if confirmed
-            Players.reset_data (err) -> Template.error.show(err.reason)
+            Players.reset_data (err) -> Toaster.error(err.reason)
 
 _.extend Template.leaderboard,
   players: ->
@@ -28,17 +30,19 @@ _.extend Template.leaderboard,
             name: input.val()
             score: Math.floor(Math.random() * 10) * 5
           },
-          (err) -> Template.error.show(err.reason) if err
+          (err) -> Toaster.error(err.reason) if err
         input.val ''
+      else
+        Toaster.warning 'Enter New Player'
 
 _.extend Template.player,
   events:
     'click .increment': ->
       Players.update @_id, $inc: {score: 5},
-        (err) -> Template.error.show(err.reason) if err
+        (err) -> Toaster.error(err.reason) if err
     'click .remove': ->
       Players.remove @_id,
-        (err) -> Template.error.show(err.reason) if err
+        (err) -> Toaster.error(err.reason) if err
     'click': ->
       $('.tooltip').remove()  # To prevent zombie tooltips.
 
@@ -46,15 +50,3 @@ _.extend Template.player,
     # Update tooltips after the template has rendered.
     _.defer -> $('[rel=tooltip]').tooltip()
     ''
-
-_.extend Template.error,
-  error: -> Session.get 'error'
-
-  events:
-    'click .close': -> Template.error.hide()
-
-  show: (msg) ->
-    $('#error').show('fast', -> Session.set('error', msg))
-
-  hide: ->
-    $('#error').hide('fast', -> Session.set('error', undefined))
