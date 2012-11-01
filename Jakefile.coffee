@@ -9,7 +9,7 @@ task 'default', -> jake.exec ['jake -T'], EXEC_PRINT_OPTS
 
 desc 'Compile CoffeeScript and LESS source files.'
 task 'build', ->
-  jake.exec ['coffee -cb model.coffee',
+  jake.exec ['coffee -cb ./common/model.coffee',
              'coffee -cb ./client/main.coffee',
              'coffee -cb ./server/main.coffee',
              'lessc ./client/main.less ./client/main.css'],
