@@ -2,7 +2,7 @@
 
 Meteor.startup ->
   bootbox.animate false
-  Toaster.defaults.timeout = 5000
+  Toast.defaults.displayDuration = 1000
 
 Meteor.subscribe 'players'
 
@@ -14,7 +14,7 @@ _.extend Template.navbar,
       bootbox.confirm 'Are you sure you want to reset the data?', 'No', 'Yes',
         (confirmed) ->
           if confirmed
-            Players.reset_data (err) -> Toaster.error(err.reason)
+            Players.reset_data (err) -> Toast.error(err.reason)
 
 _.extend Template.leaderboard,
   players: ->
@@ -30,19 +30,19 @@ _.extend Template.leaderboard,
             name: input.val()
             score: Math.floor(Math.random() * 10) * 5
           },
-          (err) -> Toaster.error(err.reason) if err
+          (err) -> Toast.error(err.reason) if err
         input.val ''
       else
-        Toaster.warning 'Enter New Player'
+        Toast.warning 'Enter New Player'
 
 _.extend Template.player,
   events:
     'click .increment': ->
       Players.update @_id, $inc: {score: 5},
-        (err) -> Toaster.error(err.reason) if err
+        (err) -> Toast.error(err.reason) if err
     'click .remove': ->
       Players.remove @_id,
-        (err) -> Toaster.error(err.reason) if err
+        (err) -> Toast.error(err.reason) if err
     'click': ->
       $('.tooltip').remove()  # To prevent zombie tooltips.
 
