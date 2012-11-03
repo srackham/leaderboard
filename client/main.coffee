@@ -2,6 +2,7 @@
 
 Meteor.startup ->
   bootbox.animate false
+  Toast.defaults.width = '400px'
   Toast.defaults.displayDuration = 1000
 
 Meteor.subscribe 'players'

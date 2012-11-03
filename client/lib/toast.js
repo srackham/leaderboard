@@ -2,6 +2,7 @@
 // Toast popup notifier
 //
 // By: Stuart Rackham
+// https://github.com/srackham/toast.js
 //
 // Inspired by: https://github.com/Srirangan/notifer.js
 //              https://github.com/CodeSeven/toastr
