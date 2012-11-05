@@ -1,8 +1,8 @@
-= TypesScript and CoffeeScript ports of the Meteor Leaderboard example app
+= TypesScript and CoffeeScript ports of the Meteor Leaderboard
 
 :listingblock.: <pre><code>|</code></pre>
 
-== TypesScript and CoffeeScript ports of the Meteor Leaderboard example app
+== TypesScript and CoffeeScript ports of the Meteor Leaderboard
 
 A http://www.typescriptlang.org/[TypeScript] port and a
 http://coffeescript.org/[CoffeeScript] port of the
@@ -21,7 +21,7 @@ The ports have been enhanced with:
 - Login authentication.
 
 Here's a
-https://github.com/srackham/leaderboard-coffeescript/blob/master/screenshot.png[screenshot].
+https://github.com/srackham/leaderboard/blob/master/screenshot.png[screenshot].
 
 
 === Installation
@@ -30,10 +30,10 @@ have to move the `.meteor` directory out temporarily else git refuses
 to clone). You also need to setup the required packages and then
 compile the TypeScript or CoffeeScript port and Less files:
 
-  meteor create leaderboard-coffeescript
+  meteor create leaderboard
   rm leaderboard/*
   mv leaderboard/.meteor/ /tmp
-  git clone git@github.com:srackham/leaderboard-coffeescript.git
+  git clone git@github.com:srackham/leaderboard.git
   mv /tmp/.meteor/ leaderboard/
   cd leaderboard/
   meteor remove insecure autopublish
