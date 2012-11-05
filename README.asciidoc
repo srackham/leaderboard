@@ -1,0 +1,51 @@
+= TypesScript and CoffeeScript ports of the Meteor Leaderboard example app
+
+:listingblock.: <pre><code>|</code></pre>
+
+== TypesScript and CoffeeScript ports of the Meteor Leaderboard example app
+
+A http://www.typescriptlang.org/[TypeScript] port and a
+http://coffeescript.org/[CoffeeScript] port of the
+http://meteor.com/[Meteor] framework's
+http://meteor.com/examples/leaderboard[Leaderboard example].  CSS
+written using http://lesscss.org/[Less]. The UI uses Twitter
+http://twitter.github.com/bootstrap/[Bootstrap] and
+http://bootboxjs.com/[Bootbox.js].
+
+The ports have been enhanced with:
+
+- Bootstrap styling.
+- Drop-down menus to reset the data and sort players by name and score.
+- Tooltips.
+- You can add and delete players.
+- Login authentication.
+
+Here's a
+https://github.com/srackham/leaderboard-coffeescript/blob/master/screenshot.png[screenshot].
+
+
+=== Installation
+To install create a meteor  project and clone this repo into it (you
+have to move the `.meteor` directory out temporarily else git refuses
+to clone). You also need to setup the required packages and then
+compile the TypeScript or CoffeeScript port and Less files:
+
+  meteor create leaderboard-coffeescript
+  rm leaderboard/*
+  mv leaderboard/.meteor/ /tmp
+  git clone git@github.com:srackham/leaderboard-coffeescript.git
+  mv /tmp/.meteor/ leaderboard/
+  cd leaderboard/
+  meteor remove insecure autopublish
+  meteor add jquery accounts-ui accounts-password accounts-google
+
+The build process is managed by https://github.com/mde/jake[jake].
+Run `jake build.ts` to compile the TypeScript port, run `jake
+build.cs` to compile the CoffeeScript port (choose one).
+
+To start the project in the built-in Meteor server:
+
+  meteor run
+
+Tested using Meteor version 0.5.0 and compiled with CoffeeScript
+version 1.4.0.
