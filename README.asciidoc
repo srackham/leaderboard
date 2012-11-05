@@ -40,8 +40,11 @@ compile the TypeScript or CoffeeScript port and Less files:
   meteor add jquery accounts-ui accounts-password accounts-google
 
 The build process is managed by https://github.com/mde/jake[jake].
-Run `jake build.ts` to compile the TypeScript port, run `jake
-build.cs` to compile the CoffeeScript port (choose one).
+Run `jake build.ts` to compile the TypeScript port or `jake
+build.cs` to compile the CoffeeScript port (choose one):
+
+  jake build.ts   # TypeScript
+  jake build.cs   # CoffeeScript
 
 To start the project in the built-in Meteor server:
 
