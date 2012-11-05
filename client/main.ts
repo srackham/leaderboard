@@ -83,10 +83,14 @@ module Client {
     },
 
     'click': function() {
+      // To prevent zombie tooltips from occuring when the corresponding DOM
+      // elements are deleted or moved.
       $('.tooltip').remove();
     }
   };
 
+  // Called to update tooltips each time the template is rendered. Execution is
+  // deferred until the template has been rendered.
   Template.player.enable_tooltips = function() {
     _.defer(
       () => { $('[rel=tooltip]').tooltip(); }
