@@ -8,10 +8,18 @@ desc 'List Jake tasks.'
 task 'default', -> jake.exec ['jake -T'], EXEC_PRINT_OPTS
 
 desc 'Compile CoffeeScript and LESS source files.'
-task 'build', ->
+task 'build.cs', ->
   jake.exec ['coffee -cb ./common/model.coffee',
              'coffee -cb ./client/main.coffee',
              'coffee -cb ./server/main.coffee',
+             'lessc ./client/main.less ./client/main.css'],
+             EXEC_PRINT_OPTS
+
+desc 'Compile TypeScript and LESS source files.'
+task 'build.ts', ->
+  jake.exec ['tsc --declarations ./common/model.ts',
+             'tsc ./client/main.ts',
+             'tsc ./server/main.ts',
              'lessc ./client/main.less ./client/main.css'],
              EXEC_PRINT_OPTS
 
