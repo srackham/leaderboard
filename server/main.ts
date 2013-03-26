@@ -2,6 +2,8 @@
 
 /// <reference path="../common/model.d.ts" />
 
+declare var Meteor: any;
+
 module Server {
 
   var Players = Model.Players;

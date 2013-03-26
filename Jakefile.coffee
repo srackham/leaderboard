@@ -13,15 +13,15 @@ task 'build.cs', ->
              'coffee -cb ./client/main.coffee',
              'coffee -cb ./server/main.coffee',
              'lessc ./client/main.less ./client/main.css'],
-             EXEC_PRINT_OPTS
+            EXEC_PRINT_OPTS
 
 desc 'Compile TypeScript and LESS source files.'
 task 'build.ts', ->
-  jake.exec ['tsc --declarations ./common/model.ts',
+  jake.exec ['tsc --declaration ./common/model.ts',
              'tsc ./client/main.ts',
              'tsc ./server/main.ts',
              'lessc ./client/main.less ./client/main.css'],
-             EXEC_PRINT_OPTS
+            EXEC_PRINT_OPTS
 
 desc 'Push project to github.'
 task 'push', ->

@@ -3,6 +3,7 @@
 /// <reference path="../common/model.d.ts" />
 /// <reference path="./lib/toast.d.ts" />
 
+declare var Meteor: any;
 declare var Session: any;
 declare var Template: any;
 declare var $: any;
@@ -32,11 +33,11 @@ module Client {
 
     'click .reset_data': function () {
       bootbox.confirm('Are you sure you want to reset the data?',
-        'No',
-        'Yes',
-        function(yes) {
-          if (yes) Players.reset_data((err) => Toast.error(err.reason));
-        }
+          'No',
+          'Yes',
+          function(yes) {
+            if (yes) Players.reset_data((err) => Toast.error(err.reason));
+          }
       );
     }
   };
@@ -56,10 +57,10 @@ module Client {
       var input = $('#player_name');
       if (input.val()) {
         Players.insert({
-            name: input.val(),
-            score: Math.floor(Math.random() * 10) * 5
-          },
-          (err) => { if (err) Toast.error(err.reason); }
+              name: input.val(),
+              score: Math.floor(Math.random() * 10) * 5
+            },
+            (err) => { if (err) Toast.error(err.reason); }
         );
         input.val('');
       } else {
@@ -71,14 +72,14 @@ module Client {
   Template.player.events = {
     'click .increment': function () {
       Players.update(this._id,
-        {$inc: {score: 5}},
-        (err) => { if (err) Toast.error(err.reason); }
+          {$inc: {score: 5}},
+          (err) => { if (err) Toast.error(err.reason); }
       );
     },
 
     'click .remove': function() {
       Players.remove(this._id,
-        (err) => { if (err) Toast.error(err.reason); }
+          (err) => { if (err) Toast.error(err.reason); }
       );
     },
 
@@ -93,7 +94,7 @@ module Client {
   // deferred until the template has been rendered.
   Template.player.enable_tooltips = function() {
     _.defer(
-      () => { $('[rel=tooltip]').tooltip(); }
+        () => { $('[rel=tooltip]').tooltip(); }
     );
   };
 
