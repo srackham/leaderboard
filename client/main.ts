@@ -32,11 +32,15 @@ module Client {
     },
 
     'click .reset_data': function () {
+      if (!Meteor.userId()) {
+        Toast.error('Access denied');
+        return;
+      }
       bootbox.confirm('Are you sure you want to reset the data?',
           'No',
           'Yes',
           function(yes) {
-            if (yes) Players.reset_data((err) => Toast.error(err.reason));
+            if (yes) Meteor.call('reset_data');
           }
       );
     }

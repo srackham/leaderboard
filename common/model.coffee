@@ -20,6 +20,7 @@ _.extend Players,
               'Claude Shannon',
               'Issac Newton',
             ]
+    console.log 'Resetting data.'
     Players.remove {},
       (err) ->
         if err

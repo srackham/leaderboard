@@ -12,10 +12,11 @@ _.extend Template.navbar,
     'click .sort_by_name': -> Session.set 'sort_by_name', true
     'click .sort_by_score': -> Session.set 'sort_by_name', false
     'click .reset_data': ->
+      if not Meteor.userId()
+        Toast.error 'Access denied'
+        return
       bootbox.confirm 'Are you sure you want to reset the data?', 'No', 'Yes',
-        (confirmed) ->
-          if confirmed
-            Players.reset_data (err) -> Toast.error(err.reason)
+        (confirmed) -> Meteor.call 'reset_data' if confirmed
 
 _.extend Template.leaderboard,
   players: ->

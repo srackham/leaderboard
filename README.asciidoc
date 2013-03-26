@@ -4,6 +4,13 @@
 
 == TypesScript and CoffeeScript ports of the Meteor Leaderboard
 
+Current version tested using:
+
+- Meteor version 0.5.9
+- TypeScript 0.8.3.0
+- CoffeeScript version 1.6.2
+- Jake 0.5.10
+
 A http://www.typescriptlang.org/[TypeScript] port and a
 http://coffeescript.org/[CoffeeScript] port of the
 http://meteor.com/[Meteor] framework's
@@ -37,7 +44,7 @@ compile the TypeScript or CoffeeScript port and Less files:
   mv /tmp/.meteor/ leaderboard/
   cd leaderboard/
   meteor remove insecure autopublish
-  meteor add jquery accounts-ui accounts-password accounts-google
+  meteor add jquery bootstrap accounts-ui accounts-password accounts-google
 
 The build process is managed by https://github.com/mde/jake[jake].
 Run `jake build.ts` to compile the TypeScript port or `jake
@@ -50,5 +57,3 @@ To start the project in the built-in Meteor server:
 
   meteor run
 
-Tested using Meteor version 0.5.0 and compiled with CoffeeScript
-version 1.4.0.

@@ -32,6 +32,7 @@ module Model {
       else
         console.log(err.reason);
     };
+    console.log('Resetting data.');
     Players.remove({}, function(err) {
       if (err) {
         handleError(err);

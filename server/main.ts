@@ -19,4 +19,15 @@ module Server {
     }
   });
 
+  Meteor.methods({
+    reset_data: function() {
+      if (this.userId) {
+        Players.reset_data();
+      }
+      else {
+        console.log('Access denied.');
+      }
+    }
+  });
+
 }
