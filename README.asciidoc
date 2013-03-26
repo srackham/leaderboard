@@ -40,7 +40,7 @@ compile the TypeScript or CoffeeScript port and Less files:
   meteor create leaderboard
   rm leaderboard/*
   mv leaderboard/.meteor/ /tmp
-  git clone git@github.com:srackham/leaderboard.git
+  git clone git://github.com/srackham/leaderboard.git
   mv /tmp/.meteor/ leaderboard/
   cd leaderboard/
   meteor remove insecure autopublish
