@@ -25,7 +25,7 @@ module Server {
         Players.reset_data();
       }
       else {
-        console.log('Access denied.');
+        throw new Meteor.Error(401, 'Access denied');
       }
     }
   });

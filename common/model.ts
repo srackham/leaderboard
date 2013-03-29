@@ -15,8 +15,9 @@ module Model {
   });
 
   // Delete all existing documents then insert new ones.
-  Players.reset_data = function (errback) {
-    // Calls errback(err) if are any errors.
+  // Synchronous, server only.
+  // Throws exception if on error.
+  Players.reset_data = function () {
     var names = [
       'Ada Lovelace',
       'Grace Hopper',
@@ -26,28 +27,19 @@ module Model {
       'Claude Shannon',
       'Issac Newton'
     ];
-    function handleError(err) {
-      if (errback)
-        errback(err);
-      else
-        console.log(err.reason);
-    };
+    if (!Meteor.isServer) {
+      throw new Meteor.Error('Server only');
+    }
     console.log('Resetting data.');
-    Players.remove({}, function(err) {
-      if (err) {
-        handleError(err);
-      } else {
-        for (var i in names) {
-          Players.insert(
-              {
-                name: names[i],
-                score: Math.floor(Math.random() * 10) * 5
-              },
-              function(err) { if (err) handleError(err); }
-          );
-        }
-      }
-    });
+    Players.remove({});
+    for (var i in names) {
+      Players.insert(
+          {
+            name: names[i],
+            score: Math.floor(Math.random() * 10) * 5
+          }
+      );
+    }
   }
 
 }
