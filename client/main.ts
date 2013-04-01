@@ -1,7 +1,6 @@
 // Leaderboard -- client
 
 /// <reference path="../common/model.d.ts" />
-/// <reference path="./lib/toast.d.ts" />
 
 declare var Meteor: any;
 declare var Session: any;
@@ -9,6 +8,7 @@ declare var Template: any;
 declare var $: any;
 declare var _: any;
 declare var bootbox: any;
+declare var Toast: any;
 
 module Client {
 
