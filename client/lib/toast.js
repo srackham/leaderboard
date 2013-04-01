@@ -1,8 +1,6 @@
-// Compiled from: toast.ts
-// https://github.com/srackham/toast.js
 var Toast;
 (function (Toast) {
-    ; ;
+    ;
     Toast.defaults = {
         width: '',
         displayDuration: 2000,
@@ -31,7 +29,10 @@ var Toast;
         options = $.extend({
         }, Toast.defaults, options);
         if(!_container) {
-            _container = $('<div>').attr('id', 'toast-container').appendTo($('body'));
+            _container = $('#toast-container');
+            if(_container.length === 0) {
+                _container = $('<div>').attr('id', 'toast-container').appendTo($('body'));
+            }
         }
         if(options.width) {
             _container.css({
@@ -60,4 +61,4 @@ var Toast;
         _container.prepend(toastElement);
     }
 })(Toast || (Toast = {}));
-
+//@ sourceMappingURL=toast.js.map
