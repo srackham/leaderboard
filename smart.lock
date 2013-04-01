@@ -1,0 +1,19 @@
+{
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "master",
+    "commit": "f07715dc70de16a7aab84e56ab0c6cbd9c1f9dc6"
+  },
+  "dependencies": {
+    "basePackages": {
+      "bootboxjs": {}
+    },
+    "packages": {
+      "bootboxjs": {
+        "git": "https://github.com/TimHeckel/meteor-bootboxjs.git",
+        "tag": "v0.1.1",
+        "commit": "6c46c71a5632eb49b20cd679a5008b7dc9ac39af"
+      }
+    }
+  }
+}
