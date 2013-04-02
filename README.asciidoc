@@ -68,5 +68,5 @@ build.cs` to compile the CoffeeScript port (choose one):
 
 To start the project in the built-in Meteor server:
 
-  meteor run
+  mrt run
 
