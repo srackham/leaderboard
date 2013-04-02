@@ -1,6 +1,7 @@
 {
   "meteor": {},
   "packages": {
-    "bootboxjs": {}
+    "bootboxjs": {},
+    "toastjs": {}
   }
 }
