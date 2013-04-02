@@ -4,6 +4,29 @@
 
 == TypesScript and CoffeeScript ports of the Meteor Leaderboard
 
+A http://www.typescriptlang.org/[TypeScript] port and a
+http://coffeescript.org/[CoffeeScript] port of the
+http://meteor.com/[Meteor] framework's
+http://meteor.com/examples/leaderboard[Leaderboard example].
+
+The original Leaderboard has been enhanced with:
+
+- Bootstrap styling.
+- You can add and delete players.
+- Login authentication.
+- Drop-down menus to reset the data and sort players by name and
+  score.
+- Tooltips, modal dialogs, popup notifications.
+- https://github.com/oortcloud/meteorite[Meteorite] smart packages.
+
+Here's a
+https://github.com/srackham/leaderboard/blob/master/screenshot.png[screenshot].
+
+CSS is written using http://lesscss.org/[Less]. The UI uses Twitter
+http://twitter.github.com/bootstrap/[Bootstrap],
+http://bootboxjs.com/[Bootbox.js] and
+https://github.com/srackham/toast.js[toast.js].
+
 Current version tested using:
 
 - Meteor version 0.5.9
@@ -11,25 +34,6 @@ Current version tested using:
 - TypeScript 0.8.3.0
 - CoffeeScript version 1.6.2
 - Jake 0.5.10
-
-A http://www.typescriptlang.org/[TypeScript] port and a
-http://coffeescript.org/[CoffeeScript] port of the
-http://meteor.com/[Meteor] framework's
-http://meteor.com/examples/leaderboard[Leaderboard example].  CSS
-written using http://lesscss.org/[Less]. The UI uses Twitter
-http://twitter.github.com/bootstrap/[Bootstrap] and
-http://bootboxjs.com/[Bootbox.js].
-
-The ports have been enhanced with:
-
-- Bootstrap styling.
-- Drop-down menus to reset the data and sort players by name and score.
-- Tooltips.
-- You can add and delete players.
-- Login authentication.
-
-Here's a
-https://github.com/srackham/leaderboard/blob/master/screenshot.png[screenshot].
 
 
 === Installation
