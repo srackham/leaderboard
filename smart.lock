@@ -17,8 +17,8 @@
       },
       "toastjs": {
         "git": "https://github.com/srackham/toast.js.git",
-        "tag": "v2.0.1",
-        "commit": "b6c096cd7e1a1673a4f2c4a38ec2a851a54e4546"
+        "tag": "v2.0.2",
+        "commit": "bf9fd69eedaf8bf835ca08313b42d0995386179c"
       }
     }
   }
