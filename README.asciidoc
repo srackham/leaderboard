@@ -7,6 +7,7 @@
 Current version tested using:
 
 - Meteor version 0.5.9
+- Meteorite version 0.4.9
 - TypeScript 0.8.3.0
 - CoffeeScript version 1.6.2
 - Jake 0.5.10
@@ -32,19 +33,31 @@ https://github.com/srackham/leaderboard/blob/master/screenshot.png[screenshot].
 
 
 === Installation
-To install create a meteor  project and clone this repo into it (you
-have to move the `.meteor` directory out temporarily else git refuses
-to clone). You also need to setup the required packages and then
-compile the TypeScript or CoffeeScript port and Less files:
+In addition to using built-in Meteor packages the project uses two
+https://github.com/oortcloud/meteorite[Meteorite] smart packages:
+'bootboxjs' for modal dialogs and 'toastjs' for popup notifications.
 
-  meteor create leaderboard
-  rm leaderboard/*
-  mv leaderboard/.meteor/ /tmp
-  git clone git://github.com/srackham/leaderboard.git
-  mv /tmp/.meteor/ leaderboard/
-  cd leaderboard/
+To create and install this meteor project you have to manually copy
+the cloned Git repo to the to the Meteor project directory because Git
+will not clone to an empty directory.
+
+  mrt create meteorite-leaderboard
+  # Replace default Meteorite project files with Leaderboard project files.
+  rm meteorite-leaderboard/meteorite-leaderboard.*
+  git clone git://github.com/srackham/leaderboard.git leaderboard.tmp
+  mv leaderboard.tmp/* leaderboard.tmp/.git meteorite-leaderboard
+  rm -rf leaderboard.tmp
+  # Add Meteor packages.
+  cd meteorite-leaderboard
   meteor remove insecure autopublish
   meteor add jquery bootstrap accounts-ui accounts-password accounts-google
+  # Add Meteorite packages.
+  mrt add bootboxjs
+  mrt add toastjs
+  # Build project.
+  jake build.ts
+  # Run project.
+  mrt
 
 The build process is managed by https://github.com/mde/jake[jake].
 Run `jake build.ts` to compile the TypeScript port or `jake
