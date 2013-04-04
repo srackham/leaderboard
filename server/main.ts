@@ -8,6 +8,13 @@ module Server {
 
   var Players = Model.Players;
 
+  Meteor.startup(function() {
+    // Create some players if the database is empty.
+    if (Players.find().count() === 0) {
+      Players.reset_data();
+    }
+  });
+
   Meteor.publish('players', function() {
     return Players.find();
   });
@@ -32,9 +39,6 @@ module Server {
       'Claude Shannon',
       'Issac Newton'
     ];
-    if (!Meteor.isServer) {
-      throw new Meteor.Error('Server only');
-    }
     console.log('Resetting data.');
     this.remove({});
     for (var i in names) {
@@ -46,13 +50,6 @@ module Server {
       );
     }
   }
-
-  Meteor.startup(function() {
-    // Create some players if the database is empty.
-    if (Players.find().count() === 0) {
-      Players.reset_data();
-    }
-  });
 
   Meteor.methods({
     reset_data: function() {
