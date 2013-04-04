@@ -6,7 +6,6 @@ declare var Meteor: any;
 declare var Session: any;
 declare var Template: any;
 declare var $: any;
-declare var _: any;
 declare var bootbox: any;
 declare var Toast: any;
 
@@ -92,12 +91,9 @@ module Client {
     }
   });
 
-  // Called to update tooltips each time the template is rendered. Execution is
-  // deferred until the template has been rendered.
-  Template.player.enable_tooltips = function() {
-    _.defer(
-        () => { $('[rel=tooltip]').tooltip(); }
-    );
+  // Called to update tooltips each time the template is rendered.
+  Template.player.rendered = function() {
+    $('[rel=tooltip]').tooltip();
   };
 
 }
