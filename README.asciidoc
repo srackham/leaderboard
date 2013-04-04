@@ -41,27 +41,10 @@ In addition to using built-in Meteor packages the project uses two
 https://github.com/oortcloud/meteorite[Meteorite] smart packages:
 'bootboxjs' for modal dialogs and 'toastjs' for popup notifications.
 
-To create and install this meteor project you have to manually copy
-the cloned Git repo to the to the Meteor project directory because Git
-will not clone to an empty directory.
+Clone leaderboard from Github:
 
-  mrt create meteorite-leaderboard
-  # Replace default Meteorite project files with Leaderboard project files.
-  rm meteorite-leaderboard/meteorite-leaderboard.*
-  git clone git://github.com/srackham/leaderboard.git leaderboard.tmp
-  mv leaderboard.tmp/* leaderboard.tmp/.git meteorite-leaderboard
-  rm -rf leaderboard.tmp
-  # Add Meteor packages.
-  cd meteorite-leaderboard
-  meteor remove insecure autopublish
-  meteor add jquery bootstrap accounts-ui accounts-password accounts-google
-  # Add Meteorite packages.
-  mrt add bootboxjs
-  mrt add toastjs
-  # Build project.
-  jake build.ts
-  # Run project.
-  mrt
+  git clone git://github.com/srackham/leaderboard.git
+  cd leaderboard
 
 The build process is managed by https://github.com/mde/jake[jake].
 Run `jake build.ts` to compile the TypeScript port or `jake
@@ -70,7 +53,6 @@ build.cs` to compile the CoffeeScript port (choose one):
   jake build.ts   # TypeScript
   jake build.cs   # CoffeeScript
 
-To start the project in the built-in Meteor server:
+Now you can install and run using the Meteorite command:
 
-  mrt run
-
+  mrt
