@@ -22,7 +22,7 @@ module Client {
 
   Meteor.subscribe('players');
 
-  Template.navbar.events = {
+  Template.navbar.events({
     'click .sort_by_name': function () {
       Session.set('sort_by_name', true);
     },
@@ -42,7 +42,7 @@ module Client {
           }
       );
     }
-  };
+  });
 
   Template.leaderboard.players = function() {
     if (Session.get('sort_by_name'))
@@ -51,7 +51,7 @@ module Client {
       return Players.find({}, {sort: {score: -1}});
   };
 
-  Template.leaderboard.events = {
+  Template.leaderboard.events({
     'click #add_button, keyup #player_name': function(evt) {
       if (evt.type === 'keyup' && evt.which !== 13) {
         return;
@@ -69,9 +69,9 @@ module Client {
         Toast.warning('Enter New Player');
       }
     }
-  };
+  });
 
-  Template.player.events = {
+  Template.player.events({
     'click .increment': function () {
       Players.update(this._id,
           {$inc: {score: 5}},
@@ -90,7 +90,7 @@ module Client {
       // elements are deleted or moved.
       $('.tooltip').remove();
     }
-  };
+  });
 
   // Called to update tooltips each time the template is rendered. Execution is
   // deferred until the template has been rendered.
