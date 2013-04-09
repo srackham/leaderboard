@@ -29,11 +29,11 @@ https://github.com/srackham/toast.js[toast.js].
 
 Current version tested using:
 
-- Meteor version 0.5.9
-- Meteorite version 0.4.9
+- Meteor version 0.6.0
+- Meteorite version 0.5.1
 - TypeScript 0.8.3.0
 - CoffeeScript version 1.6.2
-- Jake 0.5.10
+- Jake 0.5.13
 
 
 === Installation
