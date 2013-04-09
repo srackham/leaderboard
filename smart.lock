@@ -1,8 +1,8 @@
 {
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
-    "tag": "v0.5.9",
-    "commit": "45fef52095bb6726cc1b2f05008ad891c446100a"
+    "branch": "master",
+    "commit": "0ffea1c4c308ed24906984f99b13b8fca5a0956c"
   },
   "dependencies": {
     "basePackages": {
@@ -17,8 +17,8 @@
       },
       "toastjs": {
         "git": "https://github.com/srackham/toast.js.git",
-        "tag": "v2.0.2",
-        "commit": "bf9fd69eedaf8bf835ca08313b42d0995386179c"
+        "tag": "v2.0.5",
+        "commit": "55f5af84be856ab819bdda4135f4203c499cf2d6"
       }
     }
   }

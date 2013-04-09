@@ -63,3 +63,4 @@ module Server {
   });
 
 }
+this.Server = Server; // Fix Meteor 0.6.0 var scope incompatibility.

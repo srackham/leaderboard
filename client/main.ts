@@ -97,3 +97,4 @@ module Client {
   };
 
 }
+this.Client = Client; // Fix Meteor 0.6.0 var scope incompatibility.
