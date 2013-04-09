@@ -9,6 +9,8 @@ http://coffeescript.org/[CoffeeScript] port of the
 http://meteor.com/[Meteor] framework's
 http://meteor.com/examples/leaderboard[Leaderboard example].
 
+Live demo at http://leaderboardtscs.meteor.com
+
 The original Leaderboard has been enhanced with:
 
 - Bootstrap styling.
